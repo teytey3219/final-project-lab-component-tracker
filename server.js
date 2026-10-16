@@ -34,7 +34,7 @@ app.post("/api/records", async (req, res) => {
 app.put("/api/records/:id", async (req, res) => {
   try {
     const record = await Borrow.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
+      returnDocument: "after",
       runValidators: true
     });
     if (!record) return res.status(404).json({ error: "Record not found" });
