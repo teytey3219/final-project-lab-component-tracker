@@ -2,12 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab Component Tracker</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Laboratory Component Borrowing Tracker</h1>
-  <p>Server is working!</p>
+  <main class="container">
+    <h1>Laboratory Component Borrowing Tracker</h1>
+
+    <!-- Summary banner -->
+    <section class="summary">
+      <div class="card">
+        <span class="label">Total Records</span>
+        <span id="totalCount" class="value">0</span>
+      </div>
+      <div class="card">
+        <span class="label">Still Borrowed</span>
+        <span id="borrowedCount" class="value">0</span>
+      </div>
+      <div class="card">
+        <span class="label">Returned</span>
+        <span id="returnedCount" class="value">0</span>
+      </div>
+    </section>
+
+    <!-- Add / Edit form -->
+    <section class="panel">
+      <h2 id="formTitle">Add Borrow Record</h2>
+      <form id="recordForm">
+        <label>Component Name
+          <input type="text" id="componentName" placeholder="e.g. Arduino Uno" required>
+        </label>
+        <label>Borrower Name
+          <input type="text" id="borrowerName" placeholder="e.g. Juan Dela Cruz" required>
+        </label>
+        <label>Date Borrowed
+          <input type="date" id="dateBorrowed" required>
+        </label>
+        <label>Date Returned
+          <input type="date" id="dateReturned">
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="returned"> Returned
+        </label>
+        <div class="buttons">
+          <button type="submit" id="submitBtn">Add Record</button>
+          <button type="button" id="cancelBtn" class="secondary hidden">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Records table -->
+    <section class="panel">
+      <div class="table-header">
+        <h2>Borrowing Records</h2>
+        <label class="checkbox">
+          <input type="checkbox" id="filterBorrowed"> Show only still borrowed
+        </label>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Borrower</th>
+            <th>Date Borrowed</th>
+            <th>Status</th>
+            <th>Date Returned</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="recordsBody"></tbody>
+      </table>
+      <p id="emptyMessage" class="hidden">No records to show.</p>
+    </section>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>
